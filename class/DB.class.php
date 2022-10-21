@@ -2,11 +2,17 @@
 	class DB{
 		private static $conn;
 		
-        include('config.php');
+        private static $config;
 
-		static function getConn(){
-			if(is_null(self::$conn)){
-				self::$conn = new PDO('mysql:host='.self::$host.';dbname='.self::$banco,self::$usuario,self::$senha);
+    
+
+		static function getConn()
+        {
+            
+			if(is_null(self::$conn))
+            {
+                self::$config = parse_ini_file('config.ini', true);
+				self::$conn = new PDO('mysql:host='.self::$config['host'].';dbname='.self::$config['banco'],self::$config['usuario'],self::$config['senha']);
 				self::$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 			}
 			return self::$conn;
