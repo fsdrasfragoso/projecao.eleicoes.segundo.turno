@@ -40,6 +40,7 @@ include('class/Candidato.class.php');
     <ul class="navbar-nav mr-auto">
       <li @if($current=="home") class="nav-item active" @else class="nav-item" @endif>
         <a class="nav-link" href="/">Home </a>
+        <a class="nav-link" href="/projecoes.php">Projeções </a>
       </li>
     </ul>
 
