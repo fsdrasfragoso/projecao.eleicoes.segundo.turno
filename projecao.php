@@ -46,11 +46,12 @@ extract($_GET);
   </div>
 </nav>
 <br/> <br/>
-    <main role="main">        
+    <main role="main">  
+    
         <div class="card border">
             <div class="card-body">
                 <h5 class="card-title">Projeções</h5>
-                <table class="table table-ordered table-hover">
+                <table class="table table-ordered table-hover" id="status">
                     <thead>
                         <tr>
                             <th>Bandeira</th>
@@ -88,7 +89,7 @@ extract($_GET);
                         <?php foreach($total as $key => $t):?>
                         <?php foreach($t as $k => $v):?>    
                             <tr>
-                            <td><img src="icons/01-brasil-circle.png" height="50px"/></td>
+                            <td><img src="/imagens/01-brasil-circle.png" height="50px"/></td>
                             <td>BRASIL</td>
                             <td>BR</td>
                             <td><?=$key?></td>
@@ -103,7 +104,8 @@ extract($_GET);
                 </table>
             </div>
             <div class="card-footer">
-                <a href="/categorias/novo" class="btn btn-sm btn-primary" role="button">Nova categoria</a>
+                <a href="/" class="btn btn-sm btn-primary" role="button">Nova Projeção</a>
+                <a href="#" onclick="ExportToExcelStatus()" data-pjax class="btn btn-secondary">Download</a>
             </div>
         </div>
             
@@ -112,7 +114,17 @@ extract($_GET);
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
-        
+        <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+        <script>
+            function ExportToExcelStatus(type, fn, dl) 
+            {
+                var elt = document.getElementById('status');
+                var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+                return dl ?
+                XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
+                XLSX.writeFile(wb, fn || ('Download.' + (type || 'xlsx')));
+            }
+        </script> 
     </body>
 </html>
 
