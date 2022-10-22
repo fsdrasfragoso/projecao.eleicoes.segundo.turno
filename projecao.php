@@ -71,7 +71,7 @@ extract($_GET);
                      ?>
                         <?php foreach(Projecao::getProjecaoByID($usuario_id) as $projecao): ?>
                             <tr>
-                                <td><img src="icons/<?=$projecao['bandeira']?>" height="50px"/></td>
+                                <td><img src="https://eleicoes.tradersbots.com/icons/<?=$projecao['bandeira']?>" height="50px"/></td>
                                 <td><?=$projecao['Estado']?></td>
                                 <td><?=$projecao['UF']?></td>
                                 <td><?=$projecao['candidato']?></td>

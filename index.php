@@ -66,7 +66,7 @@ include('class/Candidato.class.php');
             <?php foreach(Estado::all() as $estado):?>
                 <div class="card border">
                     <div class="card-body">  
-                    <h5><img height="50px" src="icons/<?=$estado['bandeira']?>"/> <?=$estado['Estado']?> - <?=$estado['UF']?>: </h5> 
+                    <h5><img height="50px" src="https://eleicoes.tradersbots.com/icons/<?=$estado['bandeira']?>"/> <?=$estado['Estado']?> - <?=$estado['UF']?>: </h5> 
                         <?php foreach(Candidato::all() as $candidato):?>
                 
                        
