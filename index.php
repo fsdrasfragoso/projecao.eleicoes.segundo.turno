@@ -98,7 +98,7 @@ include('class/Candidato.class.php');
                             $("#estado_<?=$estado['id']?><?=$candidato['id']?>").val(99);
                         }
 
-                        if($("#estado_<?=$estado['id']?><?=$candidato['id']?>").val() < 1)
+                        if($("#estado_<?=$estado['id']?><?=$candidato['id']?>").val() < 0)
                         {
                             $("#estado_<?=$estado['id']?><?=$candidato['id']?>").val(1);
                         }
