@@ -12,14 +12,15 @@ foreach(Estado::all() as $estado)
 {
     foreach(Candidato::all() as $candidato)
     {
-        $analise = Projecao::setProjecao($projecao[$estado['id']][$candidato['id']],$estado['id'],$candidato['id'],$usuario_id);
+        Projecao::setProjecao($projecao[$estado['id']][$candidato['id']],$estado['id'],$candidato['id'],$usuario_id);
     }
 }
 
-
-
-
-
-
-
+header('Location: /projecao.php?usuario_id='.$usuario_id);
+exit;
 ?>
+
+
+
+
+
